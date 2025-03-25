@@ -18,3 +18,5 @@
 # SELECT Continent AS 'Mantere', COALESCE(AVG(LifeExpectancy), 'Ei tietoa') AS 'Vanha_elinikä', COALESCE(AVG(LifeExpectancy) + 10, 'Ei tietoa') AS 'Uusi_elinikä' FROM country GROUP BY Continent;
 # SELECT DISTINCT Language FROM countrylanguage WHERE Language LIKE 'E%' ORDER BY Language;
 # SELECT city.Name FROM city INNER JOIN country ON city.ID = country.Capital WHERE country.Continent = 'Europe';
+# SELECT Name, Language, Percentage from countrylanguage INNER JOIN country on countrylanguage.CountryCode = country.Code WHERE Continent = 'Africa' AND Percentage BETWEEN 0.1 AND 2
+# SELECT Name from Country WHERE Region = 'Caribbean' AND SurfaceArea <= 500
