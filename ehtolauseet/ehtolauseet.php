@@ -106,7 +106,17 @@ if (isset($_POST["tehtava5"])) {
     $tunnus = $_POST["tunnus"];
     $salasana = $_POST["salasana"];
 
-    // kirjoita koodisi tähän
+    $kayttaja = array("Olli" => "opiskelija", "Maija" => "meikalainen");
+
+    if (array_key_exists($tunnus, $kayttaja)) {
+        if ($kayttaja[$tunnus] == $salasana) {
+            echo "<p>Käyttäjä kirjattu järjestelmään.</p>";
+        } else {
+            echo "<p>Salasana on väärin.</p>";
+        }
+    } else {
+        echo "<p>Käyttäjätunnusta ei löydy järjestelmästä.</p>";
+    }
 
 }
 
@@ -134,7 +144,21 @@ if (isset($_POST["tehtava7"])) {
 
     $arvosana = $_POST["arvosana"];
 
-    // kirjoita koodisi tähän
+    switch ($arvosana) {
+        case 1:
+        case 2:
+            echo "<p>Tyydyttävä</p>";
+            break;
+        case 3:
+        case 4:
+            echo "<p>Hyvä</p>";
+            break;
+        case 5:
+            echo "<p>Kiitettävä</p>";
+            break;
+        default:
+            echo "<p>Arvosana ei kelpaa.</p>";
+    }
 }
 
 /**************
