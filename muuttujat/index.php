@@ -120,7 +120,7 @@ if(isset($_POST["tehtava5"])) {
 /**************
 *  Tehtävä 6  *
 **************/
-echo "<h3>Tehtävä 6</h3>";
+echo "<h3>Tehtävää 6</h3>";
 
 // kirjoita koodisi tähän
 
