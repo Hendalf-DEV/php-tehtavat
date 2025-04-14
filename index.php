@@ -1,14 +1,14 @@
 <?php
 // Funktio, joka listaa kaikki .php-tiedostot kansioista rekursiivisesti
-function listaaTiedostot($dir) {
+function listaaTiedostot($dir, $excludeFolders = ['.idea', '.git', '.cache']) {
     $ffs = scandir($dir);
 
     echo '<ul>';
     foreach($ffs as $ff){
-        if($ff != '.' && $ff != '..') {
+        if($ff != '.' && $ff != '..' && !in_array($ff, $excludeFolders)) { // tarkistetaan poissuljettavat kansiot
             if(is_dir($dir.'/'.$ff)) {
                 echo '<li><strong>Kansio: ' . htmlspecialchars($ff) . '</strong>';
-                listaaTiedostot($dir.'/'.$ff); // kutsutaan rekursiivisesti alikansioon
+                listaaTiedostot($dir.'/'.$ff, $excludeFolders); // kutsutaan rekursiivisesti alikansioon
                 echo '</li>';
             } else {
                 if (pathinfo($ff, PATHINFO_EXTENSION) === 'php') {
@@ -21,6 +21,7 @@ function listaaTiedostot($dir) {
     echo '</ul>';
 }
 ?>
+
 
     <!DOCTYPE html>
     <html lang="fi">
