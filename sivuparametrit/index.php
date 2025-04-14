@@ -159,9 +159,9 @@ echo "<h3>Tehtävä 5</h3>";
 <?php
 if (isset($_POST["tehtava5"])) {
 
-    $nimi = trim(strip_tags($_POST["nimi"] ?? ''));
-    $otsikko = trim(strip_tags($_POST["otsikko"] ?? ''));
-    $teksti = trim(strip_tags($_POST["teksti"] ?? ''));
+    $nimi = strip_tags($_POST["nimi"] ?? '');
+    $otsikko = strip_tags($_POST["otsikko"] ?? '');
+    $teksti = strip_tags($_POST["teksti"] ?? '');
 
     if ($nimi === '' || $otsikko === '' || $teksti === '') {
         echo "<p>Täytä kaikki kentät.</p>";
