@@ -24,11 +24,35 @@
 
     if (isset($_POST["hae"])) {
         $rekisterinro = $_POST["rekisterinro"];
-        $haku = "SELECT * FROM auto WHERE rekisterinro = '$rekisterinro'";
+        if ($rekisterinro == '') {
+            $haku = "SELECT * FROM auto";
+            $result = mysqli_query($yhteys, $haku);
 
-        $result = mysqli_query($yhteys, $haku);
-        while ($rivi = mysqli_fetch_assoc($result)) {
-            echo $rivi['rekisterinro'] . " " . $rivi['vari'] . " " . $rivi['vuosimalli'] . " " . "<br>";
+            while ($rivi = mysqli_fetch_assoc($result)) {
+                echo "Rekisterinumero: {$rivi['rekisterinro']}";
+                echo "<br>";
+                echo "Väri: {$rivi['vari']}";
+                echo "<br>";
+                echo "Vuosimalli: {$rivi['vuosimalli']}";
+                echo "<br>";
+                echo "Omistaja: {$rivi['omistaja']}";
+                echo "<br><br>";
+            }
+            mysqli_close($yhteys);
+        } else {
+            $haku = "SELECT * FROM auto WHERE rekisterinro = '$rekisterinro'";
+            $result = mysqli_query($yhteys, $haku);
+            while ($rivi = mysqli_fetch_assoc($result)) {
+                echo "Rekisterinumero: {$rivi['rekisterinro']}";
+                echo "<br>";
+                echo "Väri: {$rivi['vari']}";
+                echo "<br>";
+                echo "Vuosimalli: {$rivi['vuosimalli']}";
+                echo "<br>";
+                echo "Omistaja: {$rivi['omistaja']}";
+                echo "<br>";
+            }
+            mysqli_close($yhteys);
         }
     }
     ?>
